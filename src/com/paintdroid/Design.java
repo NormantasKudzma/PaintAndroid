@@ -11,4 +11,10 @@ public class Design extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_droid_design);
 	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+		(new Thread(new CommClient())).start();
+	}
 }

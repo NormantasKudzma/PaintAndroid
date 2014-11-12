@@ -3,11 +3,14 @@ package com.paintdroid;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 
 import android.util.Log;
 
-public class CommClient extends Thread{
+public class CommClient implements Runnable{
+	public static final int PORT = 60210;
+	
 	Socket socket;
 	PrintWriter writer;
 	BufferedReader reader;
@@ -16,20 +19,20 @@ public class CommClient extends Thread{
 	boolean send = false;
 	Action action;
 	
-	public CommClient(Socket s){
-		try {
-			socket = s;
-			writer = new PrintWriter(s.getOutputStream());
-			reader = new BufferedReader(new InputStreamReader(s.getInputStream()));
-		}
-		catch (Exception e){
-			Log.e("CommClient", "Socket error: " + e.getMessage());
-		}
-	}
+	public CommClient(){}
 	
 	@Override
 	public void run() {
 		try {
+			socket = new Socket();
+			Log.d("CommClient", "Created new socket");
+			socket.setReuseAddress(true);
+			socket.bind(null);
+			
+			socket.connect(new InetSocketAddress("192.168.1.74", 60210));
+			writer = new PrintWriter(socket.getOutputStream());
+			reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			
 			while (!done){
 				if (send && checkConnection()){
 					writer.println(action);
