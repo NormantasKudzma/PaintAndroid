@@ -10,16 +10,21 @@ import android.util.Log;
 
 public class CommClient implements Runnable{
 	public static final int PORT = 60210;
+	public static final String IP = "172.16.143.205";
+//	public static final String IP = "192.168.1.74";
 	
 	Socket socket;
 	PrintWriter writer;
 	BufferedReader reader;
+	Design design;
 	
 	boolean done = false;
 	boolean send = false;
 	Action action;
 	
-	public CommClient(){}
+	public CommClient(Design d){
+		design = d;
+	}
 	
 	@Override
 	public void run() {
@@ -29,18 +34,22 @@ public class CommClient implements Runnable{
 			socket.setReuseAddress(true);
 			socket.bind(null);
 			
-			socket.connect(new InetSocketAddress("192.168.1.74", 60210));
+			socket.connect(new InetSocketAddress(IP, 60210));
 			writer = new PrintWriter(socket.getOutputStream());
 			reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			
+			Action.point.set(10, 10);
+			performAction(Action.point);
+			
 			while (!done){
 				if (send && checkConnection()){
-					writer.println(action);
+					writer.println(action.toString());
+					Log.w("CommClient", "Sent some stuff :" + action);
 					writer.flush();
-					// wait for response after flush
-					// image = reader.read().convert to bufferedimage, pass to design
+					Thread.sleep(50);
+					String line = reader.readLine();
+					Log.w("CommClient", "Got answer " + line.getBytes());
 					send = false;
-					Log.d("CommClient", "Sent action : " + action);
 				}
 			}
 			stopClient();
