@@ -9,4 +9,6 @@
     <string name="pencil">Pieštux</string>
     <string name="line">Liniotea</string>
     <string name="color">Select color..</string>
+    <string name="brush_size">Brush size</string>
+    <string name="save_image">Save..</string>
 </resources>

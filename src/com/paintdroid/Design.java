@@ -9,11 +9,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
 
 public class Design extends Activity {
 	CommClient client;
@@ -84,6 +86,8 @@ public class Design extends Activity {
         final ImageButton menuButton = (ImageButton)findViewById(R.id.menubutton);
         
       //  final Button brushSelectButton = (Button)findViewById(R.id.select_brush);
+        final SeekBar seekBar = (SeekBar) findViewById(R.id.brush_size_seek);
+        final TextView textView = (TextView) findViewById(R.id.brush_size_view);
         
         rl.setLayoutParams(new LinearLayout.LayoutParams(
 				   LayoutParams.MATCH_PARENT,
@@ -134,6 +138,26 @@ public class Design extends Activity {
         		   
             }
         });
+		
+	      // Initialize the textview with '0'.
+			textView.setText("Brush Size: " + seekBar.getProgress() + "/" + seekBar.getMax());
+			seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+			        int progress = 0; 
+			          @Override
+			        public void onProgressChanged(SeekBar seekBar, int progresValue, boolean fromUser) {
+			            progress = progresValue;
+			        }
+
+			          @Override
+			        public void onStopTrackingTouch(SeekBar seekBar) {
+			            textView.setText("Brush Size: " + progress + "/" + seekBar.getMax());
+			        }
+
+					@Override
+					public void onStartTrackingTouch(SeekBar arg0) {
+						// TODO Auto-generated method stub	
+					}
+			       });
 		
 //		brushSelectButton.setOnClickListener(new View.OnClickListener() {
 //			
