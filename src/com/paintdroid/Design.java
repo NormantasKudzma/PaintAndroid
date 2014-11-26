@@ -5,6 +5,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -21,8 +22,8 @@ import android.widget.RelativeLayout;
 public class Design extends Activity {
 	CommClient client;
 	
-	Point oldPoint = new Point();
-	
+	Point p = new Point();
+	Point p2 = new Point();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,35 +43,53 @@ public class Design extends Activity {
 
 			@Override
 			public boolean onTouch(View v, MotionEvent e) {
-//				int index = e.getActionIndex();
-//				int pid = e.getPointerId(index);
-//			    int action = e.getActionMasked();
-//			    Point p = new Point();
-//			    p.x = (int)e.getX(pid);
-//	        	p.y = (int)e.getY(pid);
-//			    if (pid < e.getPointerCount()){
-//				    switch (action){
-//			        	case MotionEvent.ACTION_POINTER_DOWN: {
-//			        		break;
-//			        	}          
-//			        	case MotionEvent.ACTION_DOWN: { 	        		
-//				            Action.point.set(p.x, p.y);
-//				            client.performAction(Action.point);
-//				            break;
-//				        }  
-//				        case MotionEvent.ACTION_MOVE: {
-//				            Action.line.set(p.x, p.y, oldPoint.x, oldPoint.y);
-//				            client.performAction(Action.line);
-//				            break;
-//				        }
-//				        case MotionEvent.ACTION_UP: {
-//				        	break;
-//				        }
-//				    }		   
-//			    }	
+				int index = e.getActionIndex();
+				int pid = e.getPointerId(index);
+			    int action = e.getActionMasked(); 
+			    boolean wasMoved = false;
+			    if (pid < e.getPointerCount()){
+				    switch (action){
+			        	case MotionEvent.ACTION_POINTER_DOWN: {
+			        		break;
+			        	}          
+			        	case MotionEvent.ACTION_DOWN: { 	        		
+			        		p.x = (int)e.getX(pid);
+				        	p.y = (int)e.getY(pid);
+				            Log.d("A_DOWN", Integer.toString(p.x) + " " + Integer.toString(p.y));
+				            break;
+				        }  
+			        	case MotionEvent.ACTION_MOVE: {
+			        		p2.x = (int)e.getX(pid);
+				        	p2.y = (int)e.getY(pid);
+				        	Action.line.set(p.x, p.y, p2.x, p2.y);
+				        	client.performAction(Action.line);
+				        	p.x = p2.x;
+				        	p.y = p2.y;
+				        	wasMoved = true;
+				            break;
+				        }
+				        case MotionEvent.ACTION_UP: {
+			        		p2.x = (int)e.getX(pid);
+				        	p2.y = (int)e.getY(pid);
+				        	if(!wasMoved) {
+				        		Action.point.set(p.x, p.y);
+				        		client.performAction(Action.point);
+				        		break;
+				        	}
+				        	Action.line.set(p.x, p.y, p2.x, p2.y);
+				        	client.performAction(Action.line);
+				        	Log.d("A_UP", Integer.toString(p.x) + " " + Integer.toString(p.y) + " " + Integer.toString(p2.x) + " " + Integer.toString(p2.y));
+				        	wasMoved = false;
+				        	 break;
+				        }
+				    }		   
+			    }	
 			    return true;
 			}
 		});
+		 
+		
+		 
 		final RelativeLayout rl = (RelativeLayout)findViewById(R.id.menu_layout);
 		
 		final Animation zoom_in = AnimationUtils.loadAnimation(getApplicationContext(),

@@ -1,7 +1,10 @@
 package com.paintdroid;
 
+
+
 // x1 y1 x2 y2 - nesilaikai susitarimo - nukaposiu pirstus
 public enum Action {
+	
 	point {
 		int x, y;
 		void set(int ...args){
@@ -9,7 +12,7 @@ public enum Action {
 			y = args[1];
 		}
 		public String toString(){
-			return formatString(x, y);
+			return formatString(1, x, y);
 		}
 	},
 	line {
@@ -21,9 +24,21 @@ public enum Action {
 			y2 = args[3];
 		}
 		public String toString(){
-			return formatString(x1, y1, x2, y2);
+			return formatString(2, x1, y1, x2, y2);
 		}
+	},
+	color {
+		int cRGB;
+		void set(int... args) {
+			cRGB = args[0];
+		}
+		
+		public String toString() {
+			return formatString(3, cRGB);
+		}
+		
 	};
+	
 	
 	abstract void set(int ...args);
 	public abstract String toString();

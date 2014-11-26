@@ -69,8 +69,8 @@ public class CommClient implements Runnable{
 			writer = new PrintWriter(socket.getOutputStream());
 			reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			
-			Action.point.set(10, 10);
-			performAction(Action.point);
+		//	Action.point.set(10, 10);
+		//	performAction(Action.point);
 			
 			while (!done){
 				if (send && checkConnection()){
