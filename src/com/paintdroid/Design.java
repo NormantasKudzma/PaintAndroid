@@ -13,6 +13,10 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 
 public class Design extends Activity {
 	CommClient client;
@@ -127,5 +131,4 @@ public class Design extends Activity {
             }
         });
 	}
-	
 }

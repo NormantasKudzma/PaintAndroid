@@ -25,6 +25,4 @@
         android:layout_marginTop="80dp"
         android:background="#8f30e8" >
     </RelativeLayout>
-    
-    
 </LinearLayout>
