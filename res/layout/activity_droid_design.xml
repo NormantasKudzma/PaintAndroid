@@ -3,11 +3,11 @@
     android:id="@+id/draw_layout"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:weightSum="1.0"
     android:layout_margin="0dp"
     android:background="#ffffff"
     android:orientation="vertical"
     android:padding="0dp"
+    android:weightSum="1.0"
     tools:context=".Design" >
     
 	<ImageButton
@@ -23,6 +23,92 @@
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginTop="80dp"
-        android:background="#8f30e8" >
+        android:background="#4f30e2" >
+        
+        <Button
+            android:id="@+id/brush_button"
+    		android:layout_width="match_parent"
+    		android:layout_marginTop="1dp"
+   			android:layout_height="60dp"
+   			android:textSize="20sp"
+    		android:text="@string/brush"
+    		android:drawableLeft="@drawable/brush"
+    	/>
+        <Button
+            android:id="@+id/color_button"
+    		android:layout_width="match_parent"
+   			android:layout_height="60dp"
+   			android:layout_marginTop="60dp"
+   			android:textSize="20sp"
+    		android:text="@string/color"
+    		android:drawableLeft="@drawable/color"
+    	/>
+        
+        <SeekBar
+            android:id="@+id/brush_size_seek"
+           	android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentTop="true"
+	        android:layout_marginLeft="10dp"
+	        android:layout_marginRight="10dp"
+	        android:layout_marginTop="120dp"
+	        android:progress="8"
+	        android:max="128"
+        />
+        <TextView
+	        android:id="@+id/brush_size_view"
+	        android:layout_width="match_parent"
+	        android:layout_height="20dp"
+	        android:layout_alignParentLeft="true"
+	        android:layout_below="@+id/brush_size_seek"
+	        android:text="@string/brush_size"
+	        android:textSize="20sp"
+	        android:layout_marginLeft="100dp"
+	        android:layout_marginTop="0dp"
+	    />
+        
+        <Button
+            android:id="@+id/save_image"
+    		android:layout_width="match_parent"
+   			android:layout_height="60dp"
+   			android:layout_marginTop="200dp"
+   			android:textSize="20sp"
+    		android:text="@string/save_image"
+    		android:drawableLeft="@drawable/save"
+            />
+        
+<!--          <Button -->
+<!--             android:id="@+id/tools_button" -->
+<!--     		android:layout_width="match_parent" -->
+<!--    			android:layout_height="wrap_content" -->
+<!--    			android:textSize="20sp" -->
+<!--     		android:text="@string/color" -->
+<!--     		android:drawableLeft="@drawable/color" -->
+<!--     	/> -->
+        
+<!-- 		<LinearLayout -->
+<!-- 		    android:id="@+id/brush_layout" -->
+<!-- 		    android:layout_width="fill_parent" -->
+<!--         	android:layout_height="fill_parent" -->
+<!--         	android:orientation="vertical" > -->
+<!--             <RadioGroup -->
+<!--                 android:id="@+id/select_brush" -->
+<!--                 android:layout_width="wrap_content" -->
+<!--                 android:layout_height="wrap_content" > -->
+<!--     			<RadioButton android:id="@+id/select_pencil" -->
+<!--         			android:layout_width="wrap_content" -->
+<!--         			android:layout_height="wrap_content" -->
+<!--         			android:text="@string/pencil" -->
+<!--         			/> -->
+<!--     			<RadioButton android:id="@+id/select_line" -->
+<!--         			android:layout_width="wrap_content" -->
+<!--         			android:layout_height="wrap_content" -->
+<!--         			android:text="@string/line" -->
+<!--         			/> -->
+<!-- 			</RadioGroup> -->
+<!--        	 </LinearLayout> -->
+            
+        
     </RelativeLayout>
 </LinearLayout>
