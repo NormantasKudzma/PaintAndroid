@@ -9,14 +9,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Button;
-import android.widget.RelativeLayout;
 
 public class Design extends Activity {
 	CommClient client;
@@ -72,6 +69,7 @@ public class Design extends Activity {
 			}
 		});
 		final RelativeLayout rl = (RelativeLayout)findViewById(R.id.menu_layout);
+		//final LinearLayout ll = (LinearLayout)findViewById(R.id.brush_layout);
 		
 		final Animation zoom_in = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.drawable.zoom_in);
@@ -85,6 +83,12 @@ public class Design extends Activity {
         
         final ImageButton menuButton = (ImageButton)findViewById(R.id.menubutton);
         
+      //  final Button brushSelectButton = (Button)findViewById(R.id.select_brush);
+        
+        rl.setLayoutParams(new LinearLayout.LayoutParams(
+				   LayoutParams.MATCH_PARENT,
+                0));
+        
 		menuButton.setOnClickListener(new View.OnClickListener() {
            boolean isOpen = false;
 			
@@ -94,13 +98,13 @@ public class Design extends Activity {
         		   rl.setLayoutParams(new LinearLayout.LayoutParams(
                            LayoutParams.MATCH_PARENT,
                            LayoutParams.MATCH_PARENT));
-        		   menuButton.startAnimation(move_down);
+        		   //menuButton.startAnimation(move_down);
         		   rl.startAnimation(zoom_in);
         		   
         		   isOpen = !isOpen;
         	   }
         	   else {
-        		   menuButton.startAnimation(move_up);
+        		   //menuButton.startAnimation(move_up);
         		   rl.startAnimation(zoom_out);
         		  
         		   
@@ -130,5 +134,16 @@ public class Design extends Activity {
         		   
             }
         });
+		
+//		brushSelectButton.setOnClickListener(new View.OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				
+//				ll.setLayoutParams(new LinearLayout.LayoutParams(
+//                        LayoutParams.MATCH_PARENT,
+//                        LayoutParams.MATCH_PARENT));
+//			}
+//		});
 	}
 }

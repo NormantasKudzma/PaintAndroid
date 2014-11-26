@@ -23,6 +23,57 @@
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginTop="80dp"
-        android:background="#8f30e8" >
+        android:background="#4f30e2" >
+        
+        <Button
+            android:id="@+id/brush_button"
+    		android:layout_width="match_parent"
+    		android:layout_marginTop="60sp"
+   			android:layout_height="60sp"
+   			android:textSize="20sp"
+    		android:text="@string/brush"
+    		android:drawableLeft="@drawable/brush"
+    	/>
+        <Button
+            android:id="@+id/color_button"
+    		android:layout_width="match_parent"
+   			android:layout_height="60sp"
+   			android:layout_marginTop="120sp"
+   			android:textSize="20sp"
+    		android:text="@string/color"
+    		android:drawableLeft="@drawable/color"
+    	/>
+<!--          <Button -->
+<!--             android:id="@+id/tools_button" -->
+<!--     		android:layout_width="match_parent" -->
+<!--    			android:layout_height="wrap_content" -->
+<!--    			android:textSize="20sp" -->
+<!--     		android:text="@string/color" -->
+<!--     		android:drawableLeft="@drawable/color" -->
+<!--     	/> -->
+        
+<!-- 		<LinearLayout -->
+<!-- 		    android:id="@+id/brush_layout" -->
+<!-- 		    android:layout_width="fill_parent" -->
+<!--         	android:layout_height="fill_parent" -->
+<!--         	android:orientation="vertical" > -->
+<!--             <RadioGroup -->
+<!--                 android:id="@+id/select_brush" -->
+<!--                 android:layout_width="wrap_content" -->
+<!--                 android:layout_height="wrap_content" > -->
+<!--     			<RadioButton android:id="@+id/select_pencil" -->
+<!--         			android:layout_width="wrap_content" -->
+<!--         			android:layout_height="wrap_content" -->
+<!--         			android:text="@string/pencil" -->
+<!--         			/> -->
+<!--     			<RadioButton android:id="@+id/select_line" -->
+<!--         			android:layout_width="wrap_content" -->
+<!--         			android:layout_height="wrap_content" -->
+<!--         			android:text="@string/line" -->
+<!--         			/> -->
+<!-- 			</RadioGroup> -->
+<!--        	 </LinearLayout> -->
+            
+        
     </RelativeLayout>
 </LinearLayout>
