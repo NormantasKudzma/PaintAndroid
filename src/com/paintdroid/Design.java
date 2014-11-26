@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -85,6 +86,7 @@ public class Design extends Activity {
         
         final ImageButton menuButton = (ImageButton)findViewById(R.id.menubutton);
         
+        final Button colorButton = (Button)findViewById(R.id.color_button);
       //  final Button brushSelectButton = (Button)findViewById(R.id.select_brush);
         final SeekBar seekBar = (SeekBar) findViewById(R.id.brush_size_seek);
         final TextView textView = (TextView) findViewById(R.id.brush_size_view);
@@ -159,6 +161,16 @@ public class Design extends Activity {
 					}
 			       });
 		
+			
+				// colorButton Listener
+			colorButton.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					
+				}
+				
+			});
 //		brushSelectButton.setOnClickListener(new View.OnClickListener() {
 //			
 //			@Override
