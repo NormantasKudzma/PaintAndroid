@@ -88,8 +88,16 @@ public class Design extends Activity {
         
         final Button colorButton = (Button)findViewById(R.id.color_button);
       //  final Button brushSelectButton = (Button)findViewById(R.id.select_brush);
-        final SeekBar seekBar = (SeekBar) findViewById(R.id.brush_size_seek);
-        final TextView textView = (TextView) findViewById(R.id.brush_size_view);
+        
+        final SeekBar brushSizeBar = (SeekBar) findViewById(R.id.brush_size_seek);
+        
+        final TextView brushSizetextView = (TextView) findViewById(R.id.brush_size_view);
+        
+        final SeekBar angleSizeBar = (SeekBar) findViewById(R.id.angle_seek);
+        
+        final TextView angleSizetextView = (TextView) findViewById(R.id.angle_view);
+        
+        
         
         rl.setLayoutParams(new LinearLayout.LayoutParams(
 				   LayoutParams.MATCH_PARENT,
@@ -142,8 +150,8 @@ public class Design extends Activity {
         });
 		
 	      // Initialize the textview with '0'.
-			textView.setText("Brush Size: " + seekBar.getProgress() + "/" + seekBar.getMax());
-			seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+			brushSizetextView.setText("Brush Size: " + brushSizeBar.getProgress() + "/" + brushSizeBar.getMax());
+			brushSizeBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 			        int progress = 0; 
 			          @Override
 			        public void onProgressChanged(SeekBar seekBar, int progresValue, boolean fromUser) {
@@ -152,7 +160,27 @@ public class Design extends Activity {
 
 			          @Override
 			        public void onStopTrackingTouch(SeekBar seekBar) {
-			            textView.setText("Brush Size: " + progress + "/" + seekBar.getMax());
+			            brushSizetextView.setText("Brush Size: " + progress + "/" + seekBar.getMax());
+			        }
+
+					@Override
+					public void onStartTrackingTouch(SeekBar arg0) {
+						// TODO Auto-generated method stub	
+					}
+			       });
+			
+			// Initialize the textview with '0'.
+			angleSizetextView.setText("Angle Size: " + angleSizeBar.getProgress() + "/" + angleSizeBar.getMax());
+			angleSizeBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+			        int progress = 0; 
+			          @Override
+			        public void onProgressChanged(SeekBar seekBar, int progresValue, boolean fromUser) {
+			            progress = progresValue;
+			        }
+
+			          @Override
+			        public void onStopTrackingTouch(SeekBar seekBar) {
+			            angleSizetextView.setText("Angle Size: " + progress + "/" + seekBar.getMax());
 			        }
 
 					@Override

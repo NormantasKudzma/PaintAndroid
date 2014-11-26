@@ -17,7 +17,6 @@
         android:layout_weight="0.1"
         android:contentDescription="@string/description"
         android:src="@drawable/menu" />
-    
     <RelativeLayout
         android:id="@+id/menu_layout"
         android:layout_width="fill_parent"
@@ -26,19 +25,28 @@
         android:background="#4f30e2" >
         
         <Button
-            android:id="@+id/brush_button"
+            android:id="@+id/tools_button"
     		android:layout_width="match_parent"
     		android:layout_marginTop="1dp"
    			android:layout_height="60dp"
    			android:textSize="20sp"
-    		android:text="@string/brush"
-    		android:drawableLeft="@drawable/brush"
+    		android:text="@string/tools"
+    		android:drawableLeft="@drawable/tools"
+    	/>
+        <Button
+        android:id="@+id/shape_button"
+    		android:layout_width="match_parent"
+    		android:layout_marginTop="60dp"
+   			android:layout_height="60dp"
+   			android:textSize="20sp"
+    		android:text="@string/shape"
+    		android:drawableLeft="@drawable/shape"
     	/>
         <Button
             android:id="@+id/color_button"
     		android:layout_width="match_parent"
    			android:layout_height="60dp"
-   			android:layout_marginTop="60dp"
+   			android:layout_marginTop="120dp"
    			android:textSize="20sp"
     		android:text="@string/color"
     		android:drawableLeft="@drawable/color"
@@ -52,30 +60,65 @@
 	        android:layout_alignParentTop="true"
 	        android:layout_marginLeft="10dp"
 	        android:layout_marginRight="10dp"
-	        android:layout_marginTop="120dp"
+	        android:layout_marginTop="180dp"
 	        android:progress="8"
 	        android:max="128"
         />
         <TextView
 	        android:id="@+id/brush_size_view"
 	        android:layout_width="match_parent"
-	        android:layout_height="20dp"
+	        android:layout_height="30dp"
 	        android:layout_alignParentLeft="true"
 	        android:layout_below="@+id/brush_size_seek"
 	        android:text="@string/brush_size"
 	        android:textSize="20sp"
 	        android:layout_marginLeft="100dp"
 	        android:layout_marginTop="0dp"
+	        android:layout_marginBottom="20dp"
 	    />
         
+        <SeekBar
+            android:id="@+id/angle_seek"
+           	android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentTop="true"
+	        android:layout_marginLeft="10dp"
+	        android:layout_marginRight="10dp"
+	        android:layout_marginTop="260dp"
+	        android:progress="0"
+	        android:max="359"
+        />
+        <TextView
+	        android:id="@+id/angle_view"
+	        android:layout_width="match_parent"
+	        android:layout_height="30dp"
+	        android:layout_alignParentLeft="true"
+	        android:layout_below="@+id/angle_seek"
+	        android:text="@string/angle_size"
+	        android:textSize="20sp"
+	        android:layout_marginLeft="100dp"
+	        android:layout_marginTop="0dp"
+	        android:layout_marginBottom="20dp"
+	    />
         <Button
             android:id="@+id/save_image"
     		android:layout_width="match_parent"
    			android:layout_height="60dp"
-   			android:layout_marginTop="200dp"
+   			android:layout_marginTop="340dp"
    			android:textSize="20sp"
     		android:text="@string/save_image"
     		android:drawableLeft="@drawable/save"
+            />
+        
+        <Button
+            android:id="@+id/load_image"
+    		android:layout_width="match_parent"
+   			android:layout_height="60dp"
+   			android:layout_marginTop="400dp"
+   			android:textSize="20sp"
+    		android:text="@string/load_image"
+    		android:drawableLeft="@drawable/load"
             />
         
 <!--          <Button -->
