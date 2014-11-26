@@ -86,7 +86,16 @@ public class Design extends Activity {
         
         final ImageButton menuButton = (ImageButton)findViewById(R.id.menubutton);
         
+        final Button toolsButton = (Button)findViewById(R.id.tools_button);
+        
+        final Button shapeButton = (Button)findViewById(R.id.shape_button);
+        
         final Button colorButton = (Button)findViewById(R.id.color_button);
+        
+        final Button saveButton  = (Button)findViewById(R.id.save_image);
+        
+        final Button loadButton = (Button)findViewById(R.id.load_image);
+        
       //  final Button brushSelectButton = (Button)findViewById(R.id.select_brush);
         
         final SeekBar brushSizeBar = (SeekBar) findViewById(R.id.brush_size_seek);
@@ -189,16 +198,46 @@ public class Design extends Activity {
 					}
 			       });
 		
+			// toolsButton Listener
+						toolsButton.setOnClickListener(new View.OnClickListener() {
+							@Override
+							public void onClick(View v) {
+								
+							}	
+						});
 			
-				// colorButton Listener
-			colorButton.setOnClickListener(new View.OnClickListener() {
+			// shapeButton Listener
+						shapeButton.setOnClickListener(new View.OnClickListener() {
+							@Override
+							public void onClick(View v) {
+								
+							}	
+						});
+			// colorButton Listener
+						colorButton.setOnClickListener(new View.OnClickListener() {
 
-				@Override
-				public void onClick(View v) {
-					
-				}
-				
+							@Override
+							public void onClick(View v) {
+								
+							}			
 			});
+						
+			// saveButton Listener
+						saveButton.setOnClickListener(new View.OnClickListener() {
+							@Override
+							public void onClick(View v) {
+								
+							}			
+			});
+			// loadButton Listener
+						loadButton.setOnClickListener(new View.OnClickListener() {
+							@Override
+							public void onClick(View v) {
+								
+							}			
+			});
+						
+						
 //		brushSelectButton.setOnClickListener(new View.OnClickListener() {
 //			
 //			@Override
