@@ -36,7 +36,34 @@ public enum Action {
 		public String toString() {
 			return formatString(3, cRGB);
 		}
-		
+	},
+	brushSize {
+		int bSize;
+		void set(int... args) {
+			bSize = args[0];
+		}
+
+		public String toString() {
+			return formatString(4, bSize);
+		}
+			
+	},
+	shape {
+		String shapeName;
+		void set(int... args) {
+			switch(args[0]) {
+			case 1:
+				shapeName = "rect";
+				break;
+			case 2: shapeName = "cicle"; break;
+			case 3: shapeName = "triangle"; break;
+			case 4: shapeName = "star"; break;
+			}
+		}
+
+		public String toString() {
+			return "5 " + shapeName;
+		}	
 	};
 	
 	

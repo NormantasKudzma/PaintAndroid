@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -39,13 +40,13 @@ public class Design extends Activity {
 	
 	private void setListeners(){
 		 findViewById(R.id.draw_layout).setOnTouchListener(new View.OnTouchListener(){
-
+			 boolean wasMoved = false;
 			@Override
 			public boolean onTouch(View v, MotionEvent e) {
 				int index = e.getActionIndex();
 				int pid = e.getPointerId(index);
 			    int action = e.getActionMasked(); 
-			    boolean wasMoved = false;
+			    
 			    if (pid < e.getPointerCount()){
 				    switch (action){
 			        	case MotionEvent.ACTION_POINTER_DOWN: {
@@ -54,27 +55,37 @@ public class Design extends Activity {
 			        	case MotionEvent.ACTION_DOWN: { 	        		
 			        		p.x = (int)e.getX(pid);
 				        	p.y = (int)e.getY(pid);
-				            Log.d("A_DOWN", Integer.toString(p.x) + " " + Integer.toString(p.y));
+				     //       Log.d("A_DOWN", Integer.toString(p.x) + " " + Integer.toString(p.y));
 				            break;
 				        }  
 			        	case MotionEvent.ACTION_MOVE: {
-			        		p2.x = (int)e.getX(pid);
-				        	p2.y = (int)e.getY(pid);
-				        	Action.line.set(p.x, p.y, p2.x, p2.y);
-				        	client.performAction(Action.line);
-				        	p.x = p2.x;
-				        	p.y = p2.y;
-				        	wasMoved = true;
+//			       	    	wasMoved = true;
+//			       	    	p2.x = (int)e.getX(pid);
+//				         	p2.y = (int)e.getY(pid);
+//			        		float dist = (Math.abs(p2.x - p.x) + Math.abs(p2.y - p.y)) / 2f;
+//							float treshold = 4 * 0.15f;
+//							if (dist > treshold){
+//								Action.line.set(p.x, p.y, p2.x, p2.y);
+//					        	client.performAction(Action.line);
+//							
+//							}
+//							else {
+//								Action.point.set(p2.x, p2.y);
+//				        		client.performAction(Action.point);
+//							}			        	
+//				        	p.x = p2.x;
+//				        	p.y = p2.y;
+				        	
 				            break;
 				        }
 				        case MotionEvent.ACTION_UP: {
 			        		p2.x = (int)e.getX(pid);
 				        	p2.y = (int)e.getY(pid);
-				        	if(!wasMoved) {
-				        		Action.point.set(p.x, p.y);
-				        		client.performAction(Action.point);
-				        		break;
-				        	}
+//				        	if(wasMoved == false) {
+//				        		Action.point.set(p.x, p.y);
+//				        		client.performAction(Action.point);
+//				        		break;
+//				        	}
 				        	Action.line.set(p.x, p.y, p2.x, p2.y);
 				        	client.performAction(Action.line);
 				        	Log.d("A_UP", Integer.toString(p.x) + " " + Integer.toString(p.y) + " " + Integer.toString(p2.x) + " " + Integer.toString(p2.y));
@@ -104,6 +115,7 @@ public class Design extends Activity {
         
         final ImageButton menuButton = (ImageButton)findViewById(R.id.menubutton);
         
+        final Button colorButton = (Button)findViewById(R.id.color_button);
       //  final Button brushSelectButton = (Button)findViewById(R.id.select_brush);
         final SeekBar seekBar = (SeekBar) findViewById(R.id.brush_size_seek);
         final TextView textView = (TextView) findViewById(R.id.brush_size_view);
@@ -178,6 +190,17 @@ public class Design extends Activity {
 					}
 			       });
 		
+			
+				// colorButton Listener
+			colorButton.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Action.color.set(165102202);
+					client.performAction(Action.color);
+				}
+				
+			});
 //		brushSelectButton.setOnClickListener(new View.OnClickListener() {
 //			
 //			@Override
