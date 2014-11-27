@@ -42,7 +42,7 @@ public enum Action {
 		void set(int... args) {
 			bSize = args[0];
 		}
-
+		
 		public String toString() {
 			return formatString(4, bSize);
 		}
@@ -52,9 +52,7 @@ public enum Action {
 		String shapeName;
 		void set(int... args) {
 			switch(args[0]) {
-			case 1:
-				shapeName = "rect";
-				break;
+			case 1: shapeName = "rect"; break;
 			case 2: shapeName = "cicle"; break;
 			case 3: shapeName = "triangle"; break;
 			case 4: shapeName = "star"; break;
@@ -63,7 +61,18 @@ public enum Action {
 
 		public String toString() {
 			return "5 " + shapeName;
-		}	
+		}
+	},
+	brushRotation {
+		int angle;
+		void set(int... args) {
+			angle = args[0];
+		}
+		
+		public String toString() {
+			return formatString(6, angle);
+		}
+	
 	};
 	
 	

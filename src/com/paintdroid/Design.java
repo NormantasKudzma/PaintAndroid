@@ -40,7 +40,7 @@ public class Design extends Activity {
 	
 	private void setListeners(){
 		 findViewById(R.id.draw_layout).setOnTouchListener(new View.OnTouchListener(){
-			 boolean wasMoved = false;
+		
 			@Override
 			public boolean onTouch(View v, MotionEvent e) {
 				int index = e.getActionIndex();
@@ -50,6 +50,7 @@ public class Design extends Activity {
 			    if (pid < e.getPointerCount()){
 				    switch (action){
 			        	case MotionEvent.ACTION_POINTER_DOWN: {
+			        		
 			        		break;
 			        	}          
 			        	case MotionEvent.ACTION_DOWN: { 	        		
@@ -115,10 +116,27 @@ public class Design extends Activity {
         
         final ImageButton menuButton = (ImageButton)findViewById(R.id.menubutton);
         
+        final Button toolsButton = (Button)findViewById(R.id.tools_button);
+        
+        final Button shapeButton = (Button)findViewById(R.id.shape_button);
+        
         final Button colorButton = (Button)findViewById(R.id.color_button);
+        
+        final Button saveButton  = (Button)findViewById(R.id.save_image);
+        
+        final Button loadButton = (Button)findViewById(R.id.load_image);
+        
       //  final Button brushSelectButton = (Button)findViewById(R.id.select_brush);
-        final SeekBar seekBar = (SeekBar) findViewById(R.id.brush_size_seek);
-        final TextView textView = (TextView) findViewById(R.id.brush_size_view);
+        
+        final SeekBar brushSizeBar = (SeekBar) findViewById(R.id.brush_size_seek);
+        
+        final TextView brushSizetextView = (TextView) findViewById(R.id.brush_size_view);
+        
+        final SeekBar angleSizeBar = (SeekBar) findViewById(R.id.angle_seek);
+        
+        final TextView angleSizetextView = (TextView) findViewById(R.id.angle_view);
+        
+        
         
         rl.setLayoutParams(new LinearLayout.LayoutParams(
 				   LayoutParams.MATCH_PARENT,
@@ -171,8 +189,8 @@ public class Design extends Activity {
         });
 		
 	      // Initialize the textview with '0'.
-			textView.setText("Brush Size: " + seekBar.getProgress() + "/" + seekBar.getMax());
-			seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+			brushSizetextView.setText("Brush Size: " + brushSizeBar.getProgress() + "/" + brushSizeBar.getMax());
+			brushSizeBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 			        int progress = 0; 
 			          @Override
 			        public void onProgressChanged(SeekBar seekBar, int progresValue, boolean fromUser) {
@@ -181,8 +199,34 @@ public class Design extends Activity {
 
 			          @Override
 			        public void onStopTrackingTouch(SeekBar seekBar) {
-			            textView.setText("Brush Size: " + progress + "/" + seekBar.getMax());
+			            brushSizetextView.setText("Brush Size: " + progress + "/" + seekBar.getMax());
+			            Action.brushSize.set(progress);
+			            client.performAction(Action.brushSize);
+			          }
+
+					@Override
+					public void onStartTrackingTouch(SeekBar arg0) {
+						// TODO Auto-generated method stub	
+					//	  Action.brushSize.set(progress);
+				    //        client.performAction(Action.brushSize);
+					}
+			       });
+			
+			// Initialize the textview with '0'.
+			angleSizetextView.setText("Angle Size: " + angleSizeBar.getProgress() + "/" + angleSizeBar.getMax());
+			angleSizeBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+			        int progress = 0; 
+			          @Override
+			        public void onProgressChanged(SeekBar seekBar, int progresValue, boolean fromUser) {
+			            progress = progresValue;
 			        }
+
+			          @Override
+			        public void onStopTrackingTouch(SeekBar seekBar) {
+			            angleSizetextView.setText("Angle Size: " + progress + "/" + seekBar.getMax());
+			            Action.brushRotation.set(progress);
+			            client.performAction(Action.brushRotation);
+			          }
 
 					@Override
 					public void onStartTrackingTouch(SeekBar arg0) {
@@ -190,17 +234,51 @@ public class Design extends Activity {
 					}
 			       });
 		
+			// toolsButton Listener
+						toolsButton.setOnClickListener(new View.OnClickListener() {
+							@Override
+							public void onClick(View v) {
+								
+							}	
+						});
 			
-				// colorButton Listener
-			colorButton.setOnClickListener(new View.OnClickListener() {
+			// shapeButton Listener
+						shapeButton.setOnClickListener(new View.OnClickListener() {
+							@Override
+							public void onClick(View v) {
+								Action.shape.set(4);
+								client.performAction(Action.shape);
+							}	
+						});
+			// colorButton Listener
+						colorButton.setOnClickListener(new View.OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
 					Action.color.set(165102202);
 					client.performAction(Action.color);
 				}
-				
+
+		
 			});
+						
+			// saveButton Listener
+						saveButton.setOnClickListener(new View.OnClickListener() {
+							@Override
+							public void onClick(View v) {
+								
+							}			
+			});
+			// loadButton Listener
+						loadButton.setOnClickListener(new View.OnClickListener() {
+							@Override
+							public void onClick(View v) {
+								
+							}			
+
+			});
+						
+						
 //		brushSelectButton.setOnClickListener(new View.OnClickListener() {
 //			
 //			@Override
