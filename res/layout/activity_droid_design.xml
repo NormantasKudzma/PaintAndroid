@@ -125,10 +125,10 @@
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginTop="80dp"
-        android:background="#4f30e2" >
+        android:background="#4f30e2">
         
             <Button
-            android:id="@+id/back"
+            android:id="@+id/back1"
     		android:layout_width="match_parent"
         	android:layout_height="60dp"
         	android:textSize="20sp"
@@ -169,9 +169,57 @@
         	android:textSize="20sp"
         	android:text="@string/picker"
             />
-                
-            
+   
+        </RelativeLayout>   
+        <RelativeLayout
+        android:id="@+id/shape_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="80dp"
+        android:background="#4f30e2" >
         
+            <Button
+            android:id="@+id/back"
+    		android:layout_width="match_parent"
+        	android:layout_height="60dp"
+        	android:textSize="20sp"
+        	android:text="@string/back"
+            />
+            
+             <Button
+            android:id="@+id/rectangle"
+    		android:layout_width="match_parent"
+        	android:layout_height="60dp"
+        	android:layout_marginTop="100dp"
+        	android:textSize="20sp"
+        	android:text="@string/rectangle"
+            />
+             
+                <Button
+            android:id="@+id/circle"
+    		android:layout_width="match_parent"
+        	android:layout_height="60dp"
+        	android:layout_marginTop="160dp"
+        	android:textSize="20sp"
+        	android:text="@string/circle"
+            />
+                 <Button
+            android:id="@+id/star"
+    		android:layout_width="match_parent"
+        	android:layout_height="60dp"
+        	android:layout_marginTop="220dp"
+        	android:textSize="20sp"
+        	android:text="@string/star"
+            />
+                 
+                   <Button
+            android:id="@+id/triange"
+    		android:layout_width="match_parent"
+        	android:layout_height="60dp"
+        	android:layout_marginTop="280dp"
+        	android:textSize="20sp"
+        	android:text="@string/triange"
+            />
             </RelativeLayout>
 <!--          <Button -->
 <!--             android:id="@+id/tools_button" -->

@@ -34,13 +34,15 @@ public final class R {
         public static final int zoom_out=0x7f02000a;
     }
     public static final class id {
-        public static final int action_settings=0x7f080012;
+        public static final int action_settings=0x7f080018;
         public static final int angle_seek=0x7f080008;
         public static final int angle_view=0x7f080009;
-        public static final int back=0x7f08000d;
+        public static final int back=0x7f080013;
+        public static final int back1=0x7f08000d;
         public static final int brush_size_seek=0x7f080006;
         public static final int brush_size_view=0x7f080007;
         public static final int bucket=0x7f080010;
+        public static final int circle=0x7f080015;
         public static final int color_button=0x7f080005;
         public static final int draw_layout=0x7f080000;
         public static final int load_image=0x7f08000b;
@@ -48,11 +50,15 @@ public final class R {
         public static final int menubutton=0x7f080001;
         public static final int pencil=0x7f08000e;
         public static final int picker=0x7f080011;
+        public static final int rectangle=0x7f080014;
         public static final int save_image=0x7f08000a;
         public static final int shape_button=0x7f080004;
+        public static final int shape_layout=0x7f080012;
+        public static final int star=0x7f080016;
         public static final int straight_line=0x7f08000f;
         public static final int tools_button=0x7f080003;
         public static final int tools_layout=0x7f08000c;
+        public static final int triange=0x7f080017;
     }
     public static final class layout {
         public static final int activity_droid_design=0x7f030000;
@@ -68,6 +74,7 @@ public final class R {
         public static final int back=0x7f05000f;
         public static final int brush_size=0x7f05000a;
         public static final int bucket=0x7f050007;
+        public static final int circle=0x7f050011;
         public static final int color=0x7f050009;
         public static final int description=0x7f050003;
         public static final int hello_world=0x7f050002;
@@ -75,9 +82,12 @@ public final class R {
         public static final int load_image=0x7f05000d;
         public static final int pencil=0x7f050005;
         public static final int picker=0x7f050008;
+        public static final int rectangle=0x7f050010;
         public static final int save_image=0x7f05000c;
         public static final int shape=0x7f05000e;
+        public static final int star=0x7f050012;
         public static final int tools=0x7f050004;
+        public static final int triange=0x7f050013;
     }
     public static final class style {
         /** 

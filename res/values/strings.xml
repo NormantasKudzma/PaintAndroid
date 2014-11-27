@@ -17,4 +17,9 @@
     <string name="load_image">Load</string>
     <string name="shape">Shapes</string>
     <string name="back">back to menu</string>
+    
+    <string name="rectangle">Rectangle</string>
+    <string name="circle">Circle</string>
+    <string name="star">Star</string>
+    <string name="triange">Triangle</string>
 </resources>

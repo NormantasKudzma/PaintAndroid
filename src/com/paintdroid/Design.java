@@ -75,6 +75,8 @@ public class Design extends Activity {
 		
 		final RelativeLayout toolsLayout = (RelativeLayout)findViewById(R.id.tools_layout);
 		
+		final RelativeLayout shapeLayout = (RelativeLayout)findViewById(R.id.shape_layout);
+		
 		//final LinearLayout ll = (LinearLayout)findViewById(R.id.brush_layout);
 		
 		final Animation zoom_in = AnimationUtils.loadAnimation(getApplicationContext(),
@@ -101,11 +103,16 @@ public class Design extends Activity {
         
         
         final Button backButton = (Button)findViewById(R.id.back);
-        
         final Button pencilButton = (Button)findViewById(R.id.pencil);
         final Button lineButton   = (Button)findViewById(R.id.straight_line);
         final Button bucketButton = (Button)findViewById(R.id.bucket);
         final Button pickerButton = (Button)findViewById(R.id.picker);
+        
+        final Button backButton1 = (Button)findViewById(R.id.back1);
+        final Button rectangleButton = (Button)findViewById(R.id.rectangle);
+        final Button circleButton   = (Button)findViewById(R.id.circle);
+        final Button starButton = (Button)findViewById(R.id.star);
+        final Button triangleButton = (Button)findViewById(R.id.triange);
         
       //  final Button brushSelectButton = (Button)findViewById(R.id.select_brush);
         
@@ -125,6 +132,9 @@ public class Design extends Activity {
         toolsLayout.setLayoutParams(new RelativeLayout.LayoutParams(
         			LayoutParams.MATCH_PARENT,
         			0));
+        shapeLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+    			LayoutParams.MATCH_PARENT,
+    			0));
         
 		menuButton.setOnClickListener(new View.OnClickListener() {
            boolean isOpen = false;
@@ -229,8 +239,12 @@ public class Design extends Activity {
 						shapeButton.setOnClickListener(new View.OnClickListener() {
 							@Override
 							public void onClick(View v) {
-								
+								menuButton.setVisibility(View.GONE);
+								shapeLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+					        			LayoutParams.MATCH_PARENT,
+					        			LayoutParams.MATCH_PARENT));
 							}	
+							
 						});
 			// colorButton Listener
 						colorButton.setOnClickListener(new View.OnClickListener() {
@@ -266,6 +280,9 @@ public class Design extends Activity {
 								toolsLayout.setLayoutParams(new RelativeLayout.LayoutParams(
 					        			LayoutParams.MATCH_PARENT,
 					        			0));
+								shapeLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+					        			LayoutParams.MATCH_PARENT,
+					        			0));
 								
 							}
 						});
@@ -274,7 +291,10 @@ public class Design extends Activity {
 							
 							@Override
 							public void onClick(View v) {
-								// TODO Auto-generated method stub
+								menuButton.setVisibility(View.VISIBLE);
+								toolsLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+					        			LayoutParams.MATCH_PARENT,
+					        			0));
 							}
 						});
 						
@@ -283,7 +303,10 @@ public class Design extends Activity {
 							
 							@Override
 							public void onClick(View v) {
-								// TODO Auto-generated method stub
+								menuButton.setVisibility(View.VISIBLE);
+								toolsLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+					        			LayoutParams.MATCH_PARENT,
+					        			0));
 							}
 						});
 						
@@ -292,7 +315,10 @@ public class Design extends Activity {
 							
 							@Override
 							public void onClick(View v) {
-								// TODO Auto-generated method stub
+								menuButton.setVisibility(View.VISIBLE);
+								toolsLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+					        			LayoutParams.MATCH_PARENT,
+					        			0));
 							}
 						});
 						
@@ -301,9 +327,80 @@ public class Design extends Activity {
 							
 							@Override
 							public void onClick(View v) {
-								// TODO Auto-generated method stub
+								menuButton.setVisibility(View.VISIBLE);
+								toolsLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+					        			LayoutParams.MATCH_PARENT,
+					        			0));
 							}
 						});
+						
+						
+			// backButton Listener
+						backButton1.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								menuButton.setVisibility(View.VISIBLE);
+								shapeLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+					        			LayoutParams.MATCH_PARENT,
+					        			0));
+								toolsLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+					        			LayoutParams.MATCH_PARENT,
+					        			0));
+								
+							}
+						});
+			// rectangleButton Listener
+						rectangleButton.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								menuButton.setVisibility(View.VISIBLE);
+								shapeLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+					        			LayoutParams.MATCH_PARENT,
+					        			0));
+							}
+						});
+						
+			// circleLineButton Listener
+						circleButton.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								menuButton.setVisibility(View.VISIBLE);
+								shapeLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+					        			LayoutParams.MATCH_PARENT,
+					        			0));
+							}
+						});
+						
+			// starButton Listener
+						starButton.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								menuButton.setVisibility(View.VISIBLE);
+								shapeLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+					        			LayoutParams.MATCH_PARENT,
+					        			0));
+							}
+						});
+						
+			// triangleButton Listener
+						triangleButton.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								menuButton.setVisibility(View.VISIBLE);
+								shapeLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+					        			LayoutParams.MATCH_PARENT,
+					        			0));
+							}
+						});
+						
+						
+			
 						
 						
 //		brushSelectButton.setOnClickListener(new View.OnClickListener() {
