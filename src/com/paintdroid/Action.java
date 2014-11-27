@@ -53,7 +53,7 @@ public enum Action {
 		void set(int... args) {
 			switch(args[0]) {
 			case 1: shapeName = "rect"; break;
-			case 2: shapeName = "cicle"; break;
+			case 2: shapeName = "circle"; break;
 			case 3: shapeName = "triangle"; break;
 			case 4: shapeName = "star"; break;
 			}
@@ -73,6 +73,17 @@ public enum Action {
 			return formatString(6, angle);
 		}
 	
+	},
+	tool {
+		int toolName;
+		void set(int... args) {
+			toolName = args[0];
+		}
+
+		public String toString() {
+			return formatString(7, toolName);
+			
+		}
 	};
 	
 	
