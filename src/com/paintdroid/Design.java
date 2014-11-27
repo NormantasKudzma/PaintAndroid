@@ -72,6 +72,9 @@ public class Design extends Activity {
 			}
 		});
 		final RelativeLayout rl = (RelativeLayout)findViewById(R.id.menu_layout);
+		
+		final RelativeLayout toolsLayout = (RelativeLayout)findViewById(R.id.tools_layout);
+		
 		//final LinearLayout ll = (LinearLayout)findViewById(R.id.brush_layout);
 		
 		final Animation zoom_in = AnimationUtils.loadAnimation(getApplicationContext(),
@@ -96,6 +99,14 @@ public class Design extends Activity {
         
         final Button loadButton = (Button)findViewById(R.id.load_image);
         
+        
+        final Button backButton = (Button)findViewById(R.id.back);
+        
+        final Button pencilButton = (Button)findViewById(R.id.pencil);
+        final Button lineButton   = (Button)findViewById(R.id.straight_line);
+        final Button bucketButton = (Button)findViewById(R.id.bucket);
+        final Button pickerButton = (Button)findViewById(R.id.picker);
+        
       //  final Button brushSelectButton = (Button)findViewById(R.id.select_brush);
         
         final SeekBar brushSizeBar = (SeekBar) findViewById(R.id.brush_size_seek);
@@ -109,8 +120,11 @@ public class Design extends Activity {
         
         
         rl.setLayoutParams(new LinearLayout.LayoutParams(
-				   LayoutParams.MATCH_PARENT,
-                0));
+				   	LayoutParams.MATCH_PARENT,
+				   	0));
+        toolsLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+        			LayoutParams.MATCH_PARENT,
+        			0));
         
 		menuButton.setOnClickListener(new View.OnClickListener() {
            boolean isOpen = false;
@@ -203,6 +217,11 @@ public class Design extends Activity {
 							@Override
 							public void onClick(View v) {
 								
+								
+								menuButton.setVisibility(View.GONE);
+								toolsLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+					        			LayoutParams.MATCH_PARENT,
+					        			LayoutParams.MATCH_PARENT));
 							}	
 						});
 			
@@ -236,6 +255,55 @@ public class Design extends Activity {
 								
 							}			
 			});
+						
+			// backButton Listener
+						backButton.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								menuButton.setVisibility(View.VISIBLE);
+								toolsLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+					        			LayoutParams.MATCH_PARENT,
+					        			0));
+								
+							}
+						});
+			// pencilButton Listener
+						pencilButton.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+							}
+						});
+						
+			// straightLineButton Listener
+						lineButton.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+							}
+						});
+						
+			// bucketButton Listener
+						bucketButton.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+							}
+						});
+						
+			// pickerButton Listener
+						pickerButton.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+							}
+						});
 						
 						
 //		brushSelectButton.setOnClickListener(new View.OnClickListener() {

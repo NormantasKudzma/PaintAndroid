@@ -6,12 +6,15 @@
     <string name="hello_world">Hello world!</string>
     <string name="description">Menu</string>
     <string name="tools">Tools..</string>
-    <string name="pencil">Pieštux</string>
-    <string name="line">Liniotea</string>
+    <string name="pencil">Pencil</string>
+    <string name="line">Straight line</string>
+    <string name="bucket">Bucket</string>
+    <string name="picker">Color picker</string>
     <string name="color">Colors</string>
     <string name="brush_size">Brush size</string>
     <string name="angle_size">Angle size</string>
     <string name="save_image">Save..</string>
     <string name="load_image">Load</string>
     <string name="shape">Shapes</string>
+    <string name="back">back to menu</string>
 </resources>
