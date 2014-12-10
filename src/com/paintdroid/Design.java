@@ -5,10 +5,14 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -16,9 +20,10 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.Spinner;
 import android.widget.TextView;
 
-public class Design extends Activity {
+public class Design extends Activity implements OnItemSelectedListener {
 	CommClient client;
 	
 	Point oldPoint = new Point();
@@ -77,25 +82,16 @@ public class Design extends Activity {
 		
 		final RelativeLayout shapeLayout = (RelativeLayout)findViewById(R.id.shape_layout);
 		
-		//final LinearLayout ll = (LinearLayout)findViewById(R.id.brush_layout);
-		
 		final Animation zoom_in = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.drawable.zoom_in);
         final Animation zoom_out = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.drawable.zoom_out);
-        
-        final Animation move_up = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.drawable.move_up);
-        final Animation move_down = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.drawable.move_down);
         
         final ImageButton menuButton = (ImageButton)findViewById(R.id.menubutton);
         
         final Button toolsButton = (Button)findViewById(R.id.tools_button);
         
         final Button shapeButton = (Button)findViewById(R.id.shape_button);
-        
-        final Button colorButton = (Button)findViewById(R.id.color_button);
         
         final Button saveButton  = (Button)findViewById(R.id.save_image);
         
@@ -114,8 +110,6 @@ public class Design extends Activity {
         final Button starButton = (Button)findViewById(R.id.star);
         final Button triangleButton = (Button)findViewById(R.id.triange);
         
-      //  final Button brushSelectButton = (Button)findViewById(R.id.select_brush);
-        
         final SeekBar brushSizeBar = (SeekBar) findViewById(R.id.brush_size_seek);
         
         final TextView brushSizetextView = (TextView) findViewById(R.id.brush_size_view);
@@ -124,6 +118,13 @@ public class Design extends Activity {
         
         final TextView angleSizetextView = (TextView) findViewById(R.id.angle_view);
         
+        final Spinner spinner = (Spinner) findViewById(R.id.colors_spinner);
+        spinner.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.colors_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
         
         
         rl.setLayoutParams(new LinearLayout.LayoutParams(
@@ -145,15 +146,13 @@ public class Design extends Activity {
         		   rl.setLayoutParams(new LinearLayout.LayoutParams(
                            LayoutParams.MATCH_PARENT,
                            LayoutParams.MATCH_PARENT));
-        		   //menuButton.startAnimation(move_down);
+
         		   rl.startAnimation(zoom_in);
         		   
         		   isOpen = !isOpen;
         	   }
         	   else {
-        		   //menuButton.startAnimation(move_up);
-        		   rl.startAnimation(zoom_out);
-        		  
+        		   rl.startAnimation(zoom_out);		  
         		   
         		   final Handler zoomHandler = new Handler(){
         			   @Override
@@ -246,14 +245,6 @@ public class Design extends Activity {
 							}	
 							
 						});
-			// colorButton Listener
-						colorButton.setOnClickListener(new View.OnClickListener() {
-
-							@Override
-							public void onClick(View v) {
-								
-							}			
-			});
 						
 			// saveButton Listener
 						saveButton.setOnClickListener(new View.OnClickListener() {
@@ -398,20 +389,19 @@ public class Design extends Activity {
 					        			0));
 							}
 						});
-						
-						
-			
-						
-						
-//		brushSelectButton.setOnClickListener(new View.OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				
-//				ll.setLayoutParams(new LinearLayout.LayoutParams(
-//                        LayoutParams.MATCH_PARENT,
-//                        LayoutParams.MATCH_PARENT));
-//			}
-//		});
 	}
+	 public void onItemSelected(AdapterView<?> parent, View view, 
+	            int pos, long id) {
+	        // An item was selected. You can retrieve the selected item using
+		 		Object colorName = parent.getItemAtPosition(pos);
+		 		String colorNameString = colorName.toString();
+		 		
+	         Log.w("Audrius",colorNameString );
+		 	
+	    }
+
+	    public void onNothingSelected(AdapterView<?> parent) {
+	        // Another interface callback
+	    }
+
 }

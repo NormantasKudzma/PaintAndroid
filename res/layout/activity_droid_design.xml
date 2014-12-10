@@ -17,6 +17,7 @@
         android:layout_weight="0.1"
         android:contentDescription="@string/description"
         android:src="@drawable/menu" />
+
     <RelativeLayout
         android:id="@+id/menu_layout"
         android:layout_width="fill_parent"
@@ -42,15 +43,23 @@
     		android:text="@string/shape"
     		android:drawableLeft="@drawable/shape"
     	/>
-        <Button
-            android:id="@+id/color_button"
-    		android:layout_width="match_parent"
-   			android:layout_height="60dp"
+<!--         <Button -->
+<!--             android:id="@+id/color_button" -->
+<!--     		android:layout_width="match_parent" -->
+<!--    			android:layout_height="60dp" -->
+<!--    			android:layout_marginTop="120dp" -->
+<!--    			android:textSize="20sp" -->
+<!--     		android:text="@string/color" -->
+<!--     		android:drawableLeft="@drawable/color" -->
+<!--     	/> -->
+ 		<Spinner
+    		android:id="@+id/colors_spinner"
+   			android:layout_width="match_parent"
+  			android:layout_height="60dp"
    			android:layout_marginTop="120dp"
-   			android:textSize="20sp"
-    		android:text="@string/color"
-    		android:drawableLeft="@drawable/color"
-    	/>
+    		android:textSize="20sp"
+     		android:text="@string/color"
+     		android:drawableLeft="@drawable/color" />
         
         <SeekBar
             android:id="@+id/brush_size_seek"
@@ -120,7 +129,13 @@
     		android:text="@string/load_image"
     		android:drawableLeft="@drawable/load"
             />
+        
+<!--         <Spinner -->
+<!--     		android:id="@+id/colors_spinner" -->
+<!--     		android:layout_width="fill_parent" -->
+<!--     		android:layout_height="wrap_content" /> -->
         <RelativeLayout
+
         android:id="@+id/tools_layout"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
@@ -190,7 +205,8 @@
         	android:drawableLeft="@drawable/pipe"
             />
    
-        </RelativeLayout>   
+        </RelativeLayout>  
+                 
         <RelativeLayout
         android:id="@+id/shape_layout"
         android:layout_width="fill_parent"
@@ -260,37 +276,5 @@
         	android:drawableLeft="@drawable/triangle"
             />
             </RelativeLayout>
-<!--          <Button -->
-<!--             android:id="@+id/tools_button" -->
-<!--     		android:layout_width="match_parent" -->
-<!--    			android:layout_height="wrap_content" -->
-<!--    			android:textSize="20sp" -->
-<!--     		android:text="@string/color" -->
-<!--     		android:drawableLeft="@drawable/color" -->
-<!--     	/> -->
-        
-<!-- 		<LinearLayout -->
-<!-- 		    android:id="@+id/brush_layout" -->
-<!-- 		    android:layout_width="fill_parent" -->
-<!--         	android:layout_height="fill_parent" -->
-<!--         	android:orientation="vertical" > -->
-<!--             <RadioGroup -->
-<!--                 android:id="@+id/select_brush" -->
-<!--                 android:layout_width="wrap_content" -->
-<!--                 android:layout_height="wrap_content" > -->
-<!--     			<RadioButton android:id="@+id/select_pencil" -->
-<!--         			android:layout_width="wrap_content" -->
-<!--         			android:layout_height="wrap_content" -->
-<!--         			android:text="@string/pencil" -->
-<!--         			/> -->
-<!--     			<RadioButton android:id="@+id/select_line" -->
-<!--         			android:layout_width="wrap_content" -->
-<!--         			android:layout_height="wrap_content" -->
-<!--         			android:text="@string/line" -->
-<!--         			/> -->
-<!-- 			</RadioGroup> -->
-<!--        	 </LinearLayout> -->
-            
-        
     </RelativeLayout>
 </LinearLayout>
