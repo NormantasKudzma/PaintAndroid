@@ -95,8 +95,6 @@ public class Design extends Activity implements OnItemSelectedListener {
         
         final Button shapeButton = (Button)findViewById(R.id.shape_button);
         
-        final Button saveButton  = (Button)findViewById(R.id.save_image);
-        
         final Button backButton = (Button)findViewById(R.id.back);
         final Button pencilButton = (Button)findViewById(R.id.pencil);
         final Button lineButton   = (Button)findViewById(R.id.straight_line);
@@ -253,14 +251,6 @@ public class Design extends Activity implements OnItemSelectedListener {
 							}	
 							
 						});
-						
-			// saveButton Listener
-						saveButton.setOnClickListener(new View.OnClickListener() {
-							@Override
-							public void onClick(View v) {
-								
-							}			
-			});
 						
 			// backButton Listener
 						backButton.setOnClickListener(new View.OnClickListener() {
