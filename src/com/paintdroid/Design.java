@@ -10,6 +10,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -17,9 +20,10 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.Spinner;
 import android.widget.TextView;
 
-public class Design extends Activity {
+public class Design extends Activity implements OnItemSelectedListener {
 	CommClient client;
 	
 	Point p = new Point();
@@ -101,30 +105,18 @@ public class Design extends Activity {
 		
 		final RelativeLayout shapeLayout = (RelativeLayout)findViewById(R.id.shape_layout);
 		
-		//final LinearLayout ll = (LinearLayout)findViewById(R.id.brush_layout);
-		
 		final Animation zoom_in = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.drawable.zoom_in);
         final Animation zoom_out = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.drawable.zoom_out);
         
-        final Animation move_up = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.drawable.move_up);
-        final Animation move_down = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.drawable.move_down);
-        
         final ImageButton menuButton = (ImageButton)findViewById(R.id.menubutton);
+        
+        final Button undoButton = (Button)findViewById(R.id.undo_button);
         
         final Button toolsButton = (Button)findViewById(R.id.tools_button);
         
         final Button shapeButton = (Button)findViewById(R.id.shape_button);
-        
-        final Button colorButton = (Button)findViewById(R.id.color_button);
-        
-        final Button saveButton  = (Button)findViewById(R.id.save_image);
-        
-        final Button loadButton = (Button)findViewById(R.id.load_image);
-        
         
         final Button backButton = (Button)findViewById(R.id.back);
         final Button pencilButton = (Button)findViewById(R.id.pencil);
@@ -138,8 +130,6 @@ public class Design extends Activity {
         final Button starButton = (Button)findViewById(R.id.star);
         final Button triangleButton = (Button)findViewById(R.id.triange);
         
-      //  final Button brushSelectButton = (Button)findViewById(R.id.select_brush);
-        
         final SeekBar brushSizeBar = (SeekBar) findViewById(R.id.brush_size_seek);
         
         final TextView brushSizetextView = (TextView) findViewById(R.id.brush_size_view);
@@ -148,7 +138,13 @@ public class Design extends Activity {
         
         final TextView angleSizetextView = (TextView) findViewById(R.id.angle_view);
         
-        
+        final Spinner spinner = (Spinner) findViewById(R.id.colors_spinner);
+        spinner.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.colors_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setPrompt("Select color");
         
         rl.setLayoutParams(new LinearLayout.LayoutParams(
 				   	LayoutParams.MATCH_PARENT,
@@ -169,15 +165,13 @@ public class Design extends Activity {
         		   rl.setLayoutParams(new LinearLayout.LayoutParams(
                            LayoutParams.MATCH_PARENT,
                            LayoutParams.MATCH_PARENT));
-        		   //menuButton.startAnimation(move_down);
+
         		   rl.startAnimation(zoom_in);
         		   
         		   isOpen = !isOpen;
         	   }
         	   else {
-        		   //menuButton.startAnimation(move_up);
-        		   rl.startAnimation(zoom_out);
-        		  
+        		   rl.startAnimation(zoom_out);		  
         		   
         		   final Handler zoomHandler = new Handler(){
         			   @Override
@@ -252,11 +246,21 @@ public class Design extends Activity {
 					}
 			       });
 		
+			// undoButton Listener
+						undoButton.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								 Action.undo.set(0);
+						         client.performAction(Action.undo);
+							}
+						});
+			
 			// toolsButton Listener
 						toolsButton.setOnClickListener(new View.OnClickListener() {
 							@Override
 							public void onClick(View v) {
-								
 								
 								menuButton.setVisibility(View.GONE);
 								toolsLayout.setLayoutParams(new RelativeLayout.LayoutParams(
@@ -276,33 +280,6 @@ public class Design extends Activity {
 							}	
 							
 						});
-			// colorButton Listener
-						colorButton.setOnClickListener(new View.OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-					Action.color.set(165102202);
-					client.performAction(Action.color);
-				}
-
-		
-			});
-						
-			// saveButton Listener
-						saveButton.setOnClickListener(new View.OnClickListener() {
-							@Override
-							public void onClick(View v) {
-								
-							}			
-			});
-			// loadButton Listener
-						loadButton.setOnClickListener(new View.OnClickListener() {
-							@Override
-							public void onClick(View v) {
-								
-							}			
-
-			});
 						
 			// backButton Listener
 						backButton.setOnClickListener(new View.OnClickListener() {
@@ -449,20 +426,54 @@ public class Design extends Activity {
 								client.performAction(Action.shape);
 							}
 						});
-						
-						
-			
-						
-						
-//		brushSelectButton.setOnClickListener(new View.OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				
-//				ll.setLayoutParams(new LinearLayout.LayoutParams(
-//                        LayoutParams.MATCH_PARENT,
-//                        LayoutParams.MATCH_PARENT));
-//			}
-//		});
 	}
+			// color listener
+	 	public void onItemSelected(AdapterView<?> parent, View view, 
+	            int pos, long id) {
+	        // An item was selected. You can retrieve the selected item using
+		 		Object colorName = parent.getItemAtPosition(pos);
+		 		String colorNameString = colorName.toString();
+		 		
+	         switch(colorNameString) {
+	         case "Black":
+	        	 Action.color.set(000000000);
+	        	 break;
+	         case "Red":
+	        	 Action.color.set(255000000);
+	        	 break;
+	         case "Blue":
+	        	 Action.color.set(000000255);
+	        	 break;
+	         case "Green":
+	        	 Action.color.set(000100000);
+	        	 break;
+	         case "Yellow":
+	        	 Action.color.set(255255000);
+	        	 break;
+	         case "Pink":
+	        	 Action.color.set(255192203);
+	        	 break;
+	         case "Purple":
+	        	 Action.color.set(128000128);
+	        	 break;
+	         case "Grey":
+	        	 Action.color.set(119136153);
+	        	 break;
+	         case "Brown":
+	        	 Action.color.set(139069019);
+	        	 break;
+	         case "White":
+	        	 Action.color.set(255255255);
+	        	 break;
+	         }
+		 	client.performAction(Action.color);
+	    }
+
+	    public void onNothingSelected(AdapterView<?> parent) {
+	        // Another interface callback
+	    	
+	    	// final TextView spinnerText = (TextView)findViewById(R.id.tekstas_nepaspausta);
+	    	 
+	    }
+
 }
