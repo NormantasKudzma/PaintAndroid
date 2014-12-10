@@ -128,46 +128,66 @@
         android:background="#4f30e2">
         
             <Button
-            android:id="@+id/back1"
+            android:id="@+id/back"
     		android:layout_width="match_parent"
         	android:layout_height="60dp"
         	android:textSize="20sp"
         	android:text="@string/back"
+        	android:drawableLeft="@drawable/undo"
             />
+            
+            <TextView 
+            android:id="@+id/tools_view"
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_alignParentLeft="true"
+	        android:text="@string/tools"
+	        android:textSize="35sp"
+	        android:layout_marginLeft="100dp"
+	        android:layout_marginTop="0dp"
+	        android:layout_marginBottom="20dp"
+	        android:textColor="#FFBF00"
+	        android:layout_below="@+id/back"
+                />
             
              <Button
             android:id="@+id/pencil"
     		android:layout_width="match_parent"
         	android:layout_height="60dp"
-        	android:layout_marginTop="100dp"
+        	android:layout_marginTop="150dp"
         	android:textSize="20sp"
         	android:text="@string/pencil"
+        	android:drawableLeft="@drawable/pencil"
+        	
             />
              
                 <Button
             android:id="@+id/straight_line"
     		android:layout_width="match_parent"
         	android:layout_height="60dp"
-        	android:layout_marginTop="160dp"
+        	android:layout_marginTop="210dp"
         	android:textSize="20sp"
         	android:text="@string/line"
+        	android:drawableLeft="@drawable/strline"
             />
                  <Button
             android:id="@+id/bucket"
     		android:layout_width="match_parent"
         	android:layout_height="60dp"
-        	android:layout_marginTop="220dp"
+        	android:layout_marginTop="270dp"
         	android:textSize="20sp"
         	android:text="@string/bucket"
+        	android:drawableLeft="@drawable/bucket"
             />
                  
                    <Button
             android:id="@+id/picker"
     		android:layout_width="match_parent"
         	android:layout_height="60dp"
-        	android:layout_marginTop="280dp"
+        	android:layout_marginTop="330dp"
         	android:textSize="20sp"
         	android:text="@string/picker"
+        	android:drawableLeft="@drawable/pipe"
             />
    
         </RelativeLayout>   
@@ -179,46 +199,65 @@
         android:background="#4f30e2" >
         
             <Button
-            android:id="@+id/back"
+            android:id="@+id/back1"
     		android:layout_width="match_parent"
         	android:layout_height="60dp"
         	android:textSize="20sp"
         	android:text="@string/back"
+        	android:drawableLeft="@drawable/undo"
             />
+            
+            <TextView 
+            android:id="@+id/shapes_view"
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_alignParentLeft="true"
+	        android:text="@string/shape"
+	        android:textSize="35sp"
+	        android:layout_marginLeft="100dp"
+	        android:layout_marginTop="0dp"
+	        android:layout_marginBottom="20dp"
+	        android:textColor="#FFBF00"
+	        android:layout_below="@+id/back1"
+                />
             
              <Button
             android:id="@+id/rectangle"
     		android:layout_width="match_parent"
         	android:layout_height="60dp"
-        	android:layout_marginTop="100dp"
+        	android:layout_marginTop="150dp"
         	android:textSize="20sp"
         	android:text="@string/rectangle"
+        	android:drawableLeft="@drawable/rect"
             />
              
                 <Button
             android:id="@+id/circle"
     		android:layout_width="match_parent"
         	android:layout_height="60dp"
-        	android:layout_marginTop="160dp"
+        	android:layout_marginTop="210dp"
         	android:textSize="20sp"
         	android:text="@string/circle"
+        	android:drawableLeft="@drawable/circle"
             />
                  <Button
             android:id="@+id/star"
     		android:layout_width="match_parent"
         	android:layout_height="60dp"
-        	android:layout_marginTop="220dp"
+        	android:layout_marginTop="270dp"
         	android:textSize="20sp"
         	android:text="@string/star"
+        	android:drawableLeft="@drawable/star"
             />
                  
                    <Button
             android:id="@+id/triange"
     		android:layout_width="match_parent"
         	android:layout_height="60dp"
-        	android:layout_marginTop="280dp"
+        	android:layout_marginTop="330dp"
         	android:textSize="20sp"
         	android:text="@string/triange"
+        	android:drawableLeft="@drawable/triangle"
             />
             </RelativeLayout>
 <!--          <Button -->

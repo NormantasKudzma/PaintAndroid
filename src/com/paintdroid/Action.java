@@ -84,6 +84,26 @@ public enum Action {
 			return formatString(7, toolName);
 			
 		}
+	},
+	save {
+		int toolName;
+		void set(int... args) {
+			toolName = args[0];
+		}
+
+		public String toString() {
+			return formatString(8, toolName);
+			
+		}
+	},
+	undo {
+		void set(int... args) {
+		}
+
+		public String toString() {
+			return formatString(9);
+			
+		}
 	};
 	
 	

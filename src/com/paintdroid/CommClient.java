@@ -66,7 +66,7 @@ public class CommClient implements Runnable{
 			socket.bind(null);
 			
 			socket.connect(new InetSocketAddress(IP, 60210));
-			writer = new PrintWriter(socket.getOutputStream());
+			writer = new PrintWriter(socket.getOutputStream(), true);
 			reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			
 		//	Action.point.set(10, 10);
@@ -76,10 +76,10 @@ public class CommClient implements Runnable{
 				if (send && checkConnection()){
 					writer.println(action.toString());
 					Log.w("CommClient", "Sent some stuff :" + action);
-					writer.flush();
-					Thread.sleep(50);
-					String line = reader.readLine();
-					Log.w("CommClient", "Got answer " + line.getBytes());
+				//	writer.flush();
+				//	Thread.sleep(50);
+				//	String line = reader.readLine();
+				//	Log.w("CommClient", "Got answer " + line.getBytes());
 					send = false;
 				}
 			}

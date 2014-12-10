@@ -61,36 +61,30 @@ public class Design extends Activity {
 				        }  
 			        	case MotionEvent.ACTION_MOVE: {
 //			       	    	wasMoved = true;
-//			       	    	p2.x = (int)e.getX(pid);
-//				         	p2.y = (int)e.getY(pid);
-//			        		float dist = (Math.abs(p2.x - p.x) + Math.abs(p2.y - p.y)) / 2f;
-//							float treshold = 4 * 0.15f;
-//							if (dist > treshold){
-//								Action.line.set(p.x, p.y, p2.x, p2.y);
-//					        	client.performAction(Action.line);
-//							
-//							}
-//							else {
-//								Action.point.set(p2.x, p2.y);
-//				        		client.performAction(Action.point);
-//							}			        	
-//				        	p.x = p2.x;
-//				        	p.y = p2.y;
-				        	
+			       	    	p2.x = (int)e.getX(pid);
+				         	p2.y = (int)e.getY(pid);
+			        		float dist = (Math.abs(p2.x - p.x) + Math.abs(p2.y - p.y)) / 2f;
+							float treshold = 4 * 0.15f;
+							if (dist > treshold){
+								Action.line.set(p.x, p.y, p2.x, p2.y);
+					        	client.performAction(Action.line);						
+							}
+							else {
+								Action.point.set(p2.x, p2.y);
+				        		client.performAction(Action.point);
+							}			        	
+				        	p.x = p2.x;
+				        	p.y = p2.y;			        	
 				            break;
 				        }
 				        case MotionEvent.ACTION_UP: {
 			        		p2.x = (int)e.getX(pid);
 				        	p2.y = (int)e.getY(pid);
-//				        	if(wasMoved == false) {
-//				        		Action.point.set(p.x, p.y);
-//				        		client.performAction(Action.point);
-//				        		break;
-//				        	}
+
 				        	Action.line.set(p.x, p.y, p2.x, p2.y);
 				        	client.performAction(Action.line);
 				        	Log.d("A_UP", Integer.toString(p.x) + " " + Integer.toString(p.y) + " " + Integer.toString(p2.x) + " " + Integer.toString(p2.y));
-				        //	wasMoved = false;
+
 				        	 break;
 				        }
 				    }		   
