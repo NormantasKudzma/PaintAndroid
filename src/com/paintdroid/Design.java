@@ -232,7 +232,6 @@ public class Design extends Activity implements OnItemSelectedListener {
 							@Override
 							public void onClick(View v) {
 								
-								
 								menuButton.setVisibility(View.GONE);
 								toolsLayout.setLayoutParams(new RelativeLayout.LayoutParams(
 					        			LayoutParams.MATCH_PARENT,
