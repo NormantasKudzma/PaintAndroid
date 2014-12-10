@@ -5,6 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="description">Menu</string>
+    <string name="undo">Undo</string>
     <string name="tools">Tools..</string>
     <string name="pencil">Pencil</string>
     <string name="line">Straight line</string>
@@ -24,6 +25,7 @@
     <string name="star">Star</string>
     <string name="triange">Triangle</string>
     
+      <string name="selectcolor">Select a color</string>
     <string-array name="colors_array">
         <item>Black</item>
         <item>Red</item>

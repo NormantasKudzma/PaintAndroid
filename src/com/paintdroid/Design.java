@@ -89,14 +89,13 @@ public class Design extends Activity implements OnItemSelectedListener {
         
         final ImageButton menuButton = (ImageButton)findViewById(R.id.menubutton);
         
+        final Button undoButton = (Button)findViewById(R.id.undo_button);
+        
         final Button toolsButton = (Button)findViewById(R.id.tools_button);
         
         final Button shapeButton = (Button)findViewById(R.id.shape_button);
         
         final Button saveButton  = (Button)findViewById(R.id.save_image);
-        
-        final Button loadButton = (Button)findViewById(R.id.load_image);
-        
         
         final Button backButton = (Button)findViewById(R.id.back);
         final Button pencilButton = (Button)findViewById(R.id.pencil);
@@ -124,8 +123,7 @@ public class Design extends Activity implements OnItemSelectedListener {
                 R.array.colors_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
-        
+        spinner.setPrompt("Select color");
         
         rl.setLayoutParams(new LinearLayout.LayoutParams(
 				   	LayoutParams.MATCH_PARENT,
@@ -221,6 +219,16 @@ public class Design extends Activity implements OnItemSelectedListener {
 					}
 			       });
 		
+			// undoButton Listener
+						undoButton.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								
+							}
+						});
+			
 			// toolsButton Listener
 						toolsButton.setOnClickListener(new View.OnClickListener() {
 							@Override
@@ -248,13 +256,6 @@ public class Design extends Activity implements OnItemSelectedListener {
 						
 			// saveButton Listener
 						saveButton.setOnClickListener(new View.OnClickListener() {
-							@Override
-							public void onClick(View v) {
-								
-							}			
-			});
-			// loadButton Listener
-						loadButton.setOnClickListener(new View.OnClickListener() {
 							@Override
 							public void onClick(View v) {
 								
@@ -390,18 +391,22 @@ public class Design extends Activity implements OnItemSelectedListener {
 							}
 						});
 	}
-	 public void onItemSelected(AdapterView<?> parent, View view, 
+			// color listener
+	 	public void onItemSelected(AdapterView<?> parent, View view, 
 	            int pos, long id) {
 	        // An item was selected. You can retrieve the selected item using
 		 		Object colorName = parent.getItemAtPosition(pos);
 		 		String colorNameString = colorName.toString();
 		 		
-	         Log.w("Audrius",colorNameString );
+	         Log.w("Audrius", colorNameString );
 		 	
 	    }
 
 	    public void onNothingSelected(AdapterView<?> parent) {
 	        // Another interface callback
+	    	
+	    	// final TextView spinnerText = (TextView)findViewById(R.id.tekstas_nepaspausta);
+	    	 
 	    }
 
 }
